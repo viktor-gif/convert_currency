@@ -1,3 +1,39 @@
 .wrap {
   padding: 0;
 }
+
+.converter__item {
+  margin-bottom: 30px;
+}
+
+.converter__field-description {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: #666;
+}
+
+.converter__input,
+.converter__calc-button {
+  position: relative;
+  bottom: 0;
+  border: 1px solid #999;
+  background: -webkit-gradient(linear, left top, left bottom, from(#dbdae1), to(#a3aaba));
+  background: linear-gradient(#dbdae1, #a3aaba);
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 10px 10px 15px rgba(0, 0, 0, 0.1), inset 1px 1px 2px #fff;
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 10px 10px 15px rgba(0, 0, 0, 0.1), inset 1px 1px 2px #fff;
+  padding: 5px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.converter__input:hover,
+.converter__calc-button:hover {
+  bottom: 5px;
+}
+
+.converter__calc-button {
+  margin-bottom: 15px;
+}
+
+.converter__result {
+  font-size: 40px;
+}

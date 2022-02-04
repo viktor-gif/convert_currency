@@ -28,16 +28,17 @@ const App = React.memo((props) => {
           <Header />
         <main>
           <Route path="/converter" render={() => <ConverterPage currencyCourses={props.currencyCourses}
-            currensyNamesOptions={currensyNamesOptions} />} />
+            currensyNamesOptions={currensyNamesOptions}isProgress={props.isProgress} />} />
           <Route path="/current" render={() => <CurrentCoursesPage currencyCourses={props.currencyCourses}
-            currensyNamesOptions={currensyNamesOptions} />} />
+            currensyNamesOptions={currensyNamesOptions}isProgress={props.isProgress} />} />
         </main>
       </div>
   );
 })
 
 const mapStateToProps = (state) => ({
-  currencyCourses: state.app.currencyCourses
+  currencyCourses: state.app.currencyCourses,
+  isProgress: state.app.isProgress
 })
 
 const AppContainer = compose (

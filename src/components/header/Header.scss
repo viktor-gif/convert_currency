@@ -1,6 +1,27 @@
 .header {
     padding: 20px 0;
+    font-size: 1.2em;
 }
 .header__nav-list {
     display: flex;
+    width: fit-content;
+    margin: 0 auto;
+    gap: 20px;
+}
+.header__nav {
+
+}
+.header__nav-item {
+    width: fit-content;
+}
+.header__nav-link {
+    position: relative;
+    bottom: 0;
+    text-decoration: none;
+    color: #666;
+    transition: all .5s;
+    &:hover {
+        bottom: 5px;
+        color: rgb(90, 64, 163);
+    }
 }

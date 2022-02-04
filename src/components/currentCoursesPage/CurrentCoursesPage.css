@@ -1,0 +1,40 @@
+.currentCourses__input {
+  position: relative;
+  bottom: 0;
+  border: 1px solid #999;
+  background: -webkit-gradient(linear, left top, left bottom, from(#dbdae1), to(#a3aaba));
+  background: linear-gradient(#dbdae1, #a3aaba);
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 10px 10px 15px rgba(0, 0, 0, 0.1), inset 1px 1px 2px #fff;
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), 10px 10px 15px rgba(0, 0, 0, 0.1), inset 1px 1px 2px #fff;
+  padding: 5px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.currentCourses__input:hover {
+  bottom: 5px;
+}
+
+.currentCourses__item {
+  margin-bottom: 20px;
+}
+
+.current-display {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  font-size: 1.5em;
+}
+
+.current-display__item span {
+  font-size: 1.7em;
+  margin-left: 40px;
+}

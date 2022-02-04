@@ -1,5 +1,7 @@
 
 import React, { useState } from "react";
+import { Preloader } from "../common/preloader/preloader";
+import "./CurrentCoursesPage.css"
 
 export const CurrentCoursesPage = React.memo((props) => {
     const [baseCurrencyRate, setBaseCurrencyRate] = useState(1)
@@ -12,23 +14,24 @@ export const CurrentCoursesPage = React.memo((props) => {
     const mainCurrencyesItems = mainCurrencyes && mainCurrencyes
     .filter(m => m.rate / baseCurrencyRate !== 1)
     .map(m => {
-        return <div key={m.r030}>{m.cc}:{" "} 
+        return <div className="current-display__item" key={m.r030}>{m.cc}:{" "} 
         <span>{Math.round(m.rate / baseCurrencyRate * 100) / 100}</span></div>
     })
 
-    console.log(mainCurrencyes)
+    if (props.isProgress) {
+        return <Preloader />
+    }
 
     return <div>
-        <div>
-        <div className="inputItem">
-            <label className="loginLabel" htmlFor="changing">
-                <select id="changing" name="changing"
+        <div className="currentCourses__item">
+            <label htmlFor="changing">
+                <select className="currentCourses__input" id="changing" name="changing"
                     onChange={e => setBaseCurrencyRate(e.currentTarget.value)}>
                     {props.currensyNamesOptions("UAH")}
                 </select>
             </label>
         </div>
-        {mainCurrencyes && <div>{mainCurrencyesItems}</div>}
-        </div>
+        {mainCurrencyes && <div className="current-display">{mainCurrencyesItems}</div>}
+        
     </div>
 })

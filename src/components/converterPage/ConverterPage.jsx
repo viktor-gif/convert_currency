@@ -9,7 +9,6 @@ export const ConverterPage = React.memo((props) => {
     const [changeable, setChangeable] = useState(1)
     const [changing, setChanging] = useState(1)
     const [result, setResult] = useState(0)
-    console.log(props.isProgress)
 
     if (props.isProgress) {
         return <Preloader />

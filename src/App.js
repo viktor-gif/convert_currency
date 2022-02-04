@@ -12,7 +12,6 @@ import store from './redux/redux-store';
 import { CurrencyName } from './components/currencyName/CurrencyName';
 
 const App = React.memo((props) => {
-  console.log(props.currencyCourses)
 
   useEffect(() => {
     props.getCurrencyCourses()

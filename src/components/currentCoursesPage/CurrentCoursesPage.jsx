@@ -5,7 +5,6 @@ import "./CurrentCoursesPage.css"
 
 export const CurrentCoursesPage = React.memo((props) => {
     const [baseCurrencyRate, setBaseCurrencyRate] = useState(1)
-    console.log(baseCurrencyRate)
 
     const mainCurrencyes = props.currencyCourses?.filter(c => {
         return c.cc === "USD" || c.cc === "UAH" || c.cc === "EUR" || c.cc === "RUB"

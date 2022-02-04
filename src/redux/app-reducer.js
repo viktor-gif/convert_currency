@@ -5,7 +5,7 @@ const IS_PROGRESS = "currency_converter/app/IS_PROGRESS";
 
 const initialState = {
   currencyCourses: null,
-  isProgress: false
+  requestInProgress: false
 }
 
 const appReducer = (state = initialState, action) => {
@@ -13,6 +13,7 @@ const appReducer = (state = initialState, action) => {
     case SET_CURRENCY_COURSES:
       let date = new Date()
       return {
+        // I added UAH currency manually so it is not in rest-api НБУ and rate === 1
         ...state,
         currencyCourses: [{
           cc: "UAH",
@@ -26,7 +27,7 @@ const appReducer = (state = initialState, action) => {
     case IS_PROGRESS:
       return {
         ...state,
-        isProgress: action.isProgress
+        requestInProgress: action.isProgress
       }
     default:
       return state;

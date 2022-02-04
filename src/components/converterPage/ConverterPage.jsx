@@ -10,7 +10,7 @@ export const ConverterPage = React.memo((props) => {
     const [changing, setChanging] = useState(1)
     const [result, setResult] = useState(0)
 
-    if (props.isProgress) {
+    if (props.requestInProgress) {
         return <Preloader />
     }
 
@@ -46,7 +46,7 @@ export const ConverterPage = React.memo((props) => {
         </div>
 
                     
-        <button className="converter__calc-button" onClick={() => setResult(Math.round(((changeable / changing) * sum) * 100) / 100)}>Порахувати</button>
+        <button className="converter__calc-button" onClick={() => setResult((Math.round(((changeable / changing) * sum) * 100) / 100).toFixed(2))}>Порахувати</button>
 
         <div className="converter__result">{result}</div>
 

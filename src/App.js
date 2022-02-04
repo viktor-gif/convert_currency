@@ -3,7 +3,7 @@ import './App.css';
 import { ConverterPage } from './components/converterPage/ConverterPage';
 import { CurrentCoursesPage } from './components/currentCoursesPage/CurrentCoursesPage';
 import { Header } from './components/header/Header';
-import { HashRouter, Route, withRouter } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { connect, Provider } from 'react-redux';
 import { getCurrencyCourses } from './redux/app-reducer'
@@ -27,9 +27,9 @@ const App = React.memo((props) => {
           <Header />
         <main>
           <Route path="/converter" render={() => <ConverterPage currencyCourses={props.currencyCourses}
-            currensyNamesOptions={currensyNamesOptions}isProgress={props.isProgress} />} />
+            currensyNamesOptions={currensyNamesOptions}requestInProgress={props.requestInProgress} />} />
           <Route path="/current" render={() => <CurrentCoursesPage currencyCourses={props.currencyCourses}
-            currensyNamesOptions={currensyNamesOptions}isProgress={props.isProgress} />} />
+            currensyNamesOptions={currensyNamesOptions}requestInProgress={props.requestInProgress} />} />
         </main>
       </div>
   );
@@ -37,7 +37,7 @@ const App = React.memo((props) => {
 
 const mapStateToProps = (state) => ({
   currencyCourses: state.app.currencyCourses,
-  isProgress: state.app.isProgress
+  requestInProgress: state.app.requestInProgress
 })
 
 const AppContainer = compose (

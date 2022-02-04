@@ -14,7 +14,7 @@ export const CurrentCoursesPage = React.memo((props) => {
     .filter(m => m.rate / baseCurrencyRate !== 1)
     .map(m => {
         return <div className="current-display__item" key={m.r030}>{m.cc}:{" "} 
-        <span>{Math.round(m.rate / baseCurrencyRate * 100) / 100}</span></div>
+        <span>{Math.round(baseCurrencyRate / m.rate * 100) / 100}</span></div>
     })
 
     if (props.isProgress) {

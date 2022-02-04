@@ -32,9 +32,14 @@
           flex-direction: column;
   gap: 10px;
   font-size: 1.5em;
+  word-spacing: 10px;
+  color: #1c1199;
+  text-shadow: 1px 1px 1px #fff;
 }
 
-.current-display__item span {
-  font-size: 1.7em;
-  margin-left: 40px;
+.currentCourses__to-currency {
+  margin-right: 10px;
+  font-size: 1.1em;
+  color: #1c1199;
+  text-shadow: 1px 1px 1px #fff;
 }

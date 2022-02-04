@@ -1,6 +1,14 @@
 .App {
+  height: 100vh;
+  width: 100%;
   text-align: center;
   padding: 0 20px;
+  background-image: url("./images/app/currency.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  filter:blur(50%);
+  font-family: sans-serif;
 }
 
 

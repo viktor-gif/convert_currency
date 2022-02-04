@@ -1,3 +1,12 @@
+$mainColor: rgb(28, 17, 153);
+$text-shasow: 1px 1px 1px #fff;
+
+@mixin textColorStyle {
+    color: $mainColor;
+    text-shadow: $text-shasow;
+}
+
+
 .header {
     padding: 20px 0;
     font-size: 1.2em;
@@ -8,11 +17,10 @@
     margin: 0 auto;
     gap: 20px;
 }
-.header__nav {
-
-}
 .header__nav-item {
     width: fit-content;
+}
+.header__nav {
 }
 .header__nav-link {
     position: relative;
@@ -22,6 +30,6 @@
     transition: all .5s;
     &:hover {
         bottom: 5px;
-        color: rgb(90, 64, 163);
+        @include textColorStyle();
     }
 }

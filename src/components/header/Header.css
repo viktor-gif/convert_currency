@@ -30,5 +30,6 @@
 }
 .header__nav-link:hover {
   bottom: 5px;
-  color: #5a40a3;
+  color: #1c1199;
+  text-shadow: 1px 1px 1px #fff;
 }

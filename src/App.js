@@ -17,10 +17,9 @@ const App = React.memo((props) => {
     props.getCurrencyCourses()
   }, [])
 
-  const currensyNamesOptions = (current) => 
-    {return props.currencyCourses?.map(c => {
-        return <CurrencyName key={c.r030} cc={c.cc} rate={c.rate} txt={c.txt} current={current} />
-    })}
+  const currensyNamesOptions = props.currencyCourses?.map(c => {
+    return <CurrencyName key={c.r030} cc={c.cc} rate={c.rate} current={"UAH"} />
+  })
 
   return (
       <div className="App">

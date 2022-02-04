@@ -1,3 +1,12 @@
+$mainColor: rgb(28, 17, 153);
+$text-shasow: 1px 1px 1px #fff;
+
+@mixin textColorStyle {
+    color: $mainColor;
+    text-shadow: $text-shasow;
+}
+
+
 .wrap {
     padding: 0;
 }
@@ -25,8 +34,35 @@
     }
 }
 .converter__calc-button {
+    font-size: 1.1em;
     margin-bottom: 15px;
+    @include textColorStyle();
+    border-radius: 5px;
+    text-transform: uppercase;
 }
 .converter__result {
-    font-size: 40px;
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;flex-direction: column;
+    gap: 10px;
+    font-size: 1.5em;
+    word-spacing: 10px;
+    @include textColorStyle();
+}
+
+.converter__description-field {
+    margin-right: 10px;
+    font-size: 1.1em;
+    @include textColorStyle();
+}
+
+.converter__item_from-to-exchange {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.converter__description-field_to {
+    margin-left: 10px;
 }

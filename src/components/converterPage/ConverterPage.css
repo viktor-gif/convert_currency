@@ -31,9 +31,53 @@
 }
 
 .converter__calc-button {
+  font-size: 1.1em;
   margin-bottom: 15px;
+  color: #1c1199;
+  text-shadow: 1px 1px 1px #fff;
+  border-radius: 5px;
+  text-transform: uppercase;
 }
 
 .converter__result {
-  font-size: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  font-size: 1.5em;
+  word-spacing: 10px;
+  color: #1c1199;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+.converter__description-field {
+  margin-right: 10px;
+  font-size: 1.1em;
+  color: #1c1199;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+.converter__item_from-to-exchange {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.converter__description-field_to {
+  margin-left: 10px;
 }

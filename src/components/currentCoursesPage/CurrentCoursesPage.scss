@@ -1,3 +1,11 @@
+$mainColor: rgb(28, 17, 153);
+$text-shasow: 1px 1px 1px #fff;
+
+@mixin textColorStyle {
+    color: $mainColor;
+    text-shadow: $text-shasow;
+}
+
 .currentCourses__input {
     position: relative;
     bottom: 0;
@@ -15,17 +23,23 @@
 .currentCourses__item {
     margin-bottom: 20px;
 }
+
 .current-display {
     display: flex;
     width: fit-content;
     margin: 0 auto;flex-direction: column;
     gap: 10px;
     font-size: 1.5em;
+    word-spacing: 10px;
+    @include textColorStyle();
 }
 .current-display__item {
     
     span {
-        font-size: 1.7em;
-        margin-left: 40px;
     }
+}
+.currentCourses__to-currency {
+    margin-right: 10px;
+    font-size: 1.1em;
+    @include textColorStyle();
 }

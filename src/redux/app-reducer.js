@@ -2,10 +2,12 @@ import { API } from "../api/api";
 
 const SET_CURRENCY_COURSES = "currency_converter/app/SET_CURRENCY_COURSES";
 const IS_PROGRESS = "currency_converter/app/IS_PROGRESS";
+const SET_ERROR = "currency_converter/app/SET_ERROR"
 
 const initialState = {
   currencyCourses: null,
-  requestInProgress: false
+  requestInProgress: false,
+  errorMessage: null
 }
 
 const appReducer = (state = initialState, action) => {
@@ -29,19 +31,30 @@ const appReducer = (state = initialState, action) => {
         ...state,
         requestInProgress: action.isProgress
       }
+    case SET_ERROR:
+      return {
+        ...state,
+        errorMessage: action.err
+      }
     default:
       return state;
   }
 };
 //action-creators
-export const setCurrencyCourses = (currencyCourses) => ({ type: SET_CURRENCY_COURSES, currencyCourses });
-export const setProgress = (isProgress)  => ({ type: IS_PROGRESS, isProgress })
+const setCurrencyCourses = (currencyCourses) => ({ type: SET_CURRENCY_COURSES, currencyCourses });
+const setProgress = (isProgress)  => ({ type: IS_PROGRESS, isProgress })
+const setError = (err) => ({ type: SET_ERROR, err})
 
 //thunk-creators
 export const getCurrencyCourses = () => async (dispatch) => {
   dispatch(setProgress(true));
-  const data = await API.getCurrencyCourses();
-  dispatch(setCurrencyCourses(data))
+  dispatch(setError(null))
+  try {
+    const data = await API.getCurrencyCourses();
+    dispatch(setCurrencyCourses(data))
+  } catch(error) {
+    dispatch(setError(error.message))
+  }
   dispatch(setProgress(false));
 };
 

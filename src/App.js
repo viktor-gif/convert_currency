@@ -17,6 +17,8 @@ const App = React.memo((props) => {
     props.getCurrencyCourses()
   }, [])
 
+  console.log(props.errorMessage)
+
   const currensyNamesOptions = props.currencyCourses?.map(c => {
     return <CurrencyName key={c.r030} cc={c.cc} rate={c.rate} current={"UAH"} />
   })
@@ -29,14 +31,20 @@ const App = React.memo((props) => {
             currensyNamesOptions={currensyNamesOptions}requestInProgress={props.requestInProgress} />} />
           <Route path="/current" render={() => <CurrentCoursesPage currencyCourses={props.currencyCourses}
             currensyNamesOptions={currensyNamesOptions}requestInProgress={props.requestInProgress} />} />
+          {props.errorMessage && <Error errorMessage={props.errorMessage} />}
         </main>
       </div>
   );
 })
 
+const Error = (props) => {
+  return <div className="errorMessage">{props.errorMessage}</div>
+}
+
 const mapStateToProps = (state) => ({
   currencyCourses: state.app.currencyCourses,
-  requestInProgress: state.app.requestInProgress
+  requestInProgress: state.app.requestInProgress,
+  errorMessage: state.app.errorMessage
 })
 
 const AppContainer = compose (

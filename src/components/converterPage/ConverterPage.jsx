@@ -19,8 +19,14 @@ export const ConverterPage = React.memo((props) => {
     )[0].rate
 
     const onCalcButtomClick = () => {
+        
         setResult((Math.round(((changeableRate / baseCurrencyRate) * sum) * 100) / 100)
         .toFixed(2))
+    }
+
+    const onSumInputChange = e => {
+        setSum(e.currentTarget.value)
+        console.log(e.currentTarget.value)
     }
 
     if (props.requestInProgress) {
@@ -32,9 +38,9 @@ export const ConverterPage = React.memo((props) => {
         <div className="converter__item converter__item_input">
             <span className="converter__description-field">Currency amount</span>
             <label className="loginLabel" htmlFor="sum">
-                <input className="converter__input" type="number" id="sum"
+                <input className="converter__input" type="number" id="sum" stap="any"
                 name="sum" placeholder="Sum"
-                value={sum} onChange={e => setSum(e.currentTarget.value)} />
+                value={sum} onChange={onSumInputChange} />
             </label>
         </div>
         <div className="converter__item converter__item_from-to-exchange">

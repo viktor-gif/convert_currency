@@ -22,4 +22,8 @@
   font-size: 40px;
 }
 
-
+.errorRecomendations {
+  width: fit-content;
+  font-size: 20px;
+  margin-top: 20px;
+}

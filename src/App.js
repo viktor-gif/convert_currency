@@ -17,7 +17,7 @@ const App = React.memo((props) => {
     props.getCurrencyCourses()
   }, [])
 
-  console.log(props.errorMessage)
+  console.log(props.currencyCourses)
 
   const currensyNamesOptions = props.currencyCourses?.map(c => {
     return <CurrencyName key={c.r030} cc={c.cc} rate={c.rate} current={"UAH"} />
@@ -38,7 +38,12 @@ const App = React.memo((props) => {
 })
 
 const Error = (props) => {
-  return <div className="errorMessage">{props.errorMessage}</div>
+  return <div className="errorMessage">
+    {props.errorMessage}
+    <div className="errorRecomendations">
+      Please check your network connection or try later
+    </div>
+  </div>
 }
 
 const mapStateToProps = (state) => ({

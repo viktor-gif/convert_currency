@@ -41,9 +41,9 @@ const appReducer = (state = initialState, action) => {
   }
 };
 //action-creators
-const setCurrencyCourses = (currencyCourses) => ({ type: SET_CURRENCY_COURSES, currencyCourses });
-const setProgress = (isProgress)  => ({ type: IS_PROGRESS, isProgress })
-const setError = (err) => ({ type: SET_ERROR, err})
+export const setCurrencyCourses = (currencyCourses) => ({ type: SET_CURRENCY_COURSES, currencyCourses });
+export const setProgress = (isProgress)  => ({ type: IS_PROGRESS, isProgress })
+export const setError = (err) => ({ type: SET_ERROR, err})
 
 //thunk-creators
 export const getCurrencyCourses = () => async (dispatch) => {

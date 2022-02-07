@@ -33,6 +33,12 @@ $text-shasow: 1px 1px 1px #fff;
         bottom: 5px;
     }
 }
+.converter__input_sum {
+    width: 100px;
+}
+.converter__input_sum-larger {
+    width: 250px;
+}
 .converter__calc-button {
     font-size: 1.1em;
     margin-bottom: 15px;
@@ -48,12 +54,17 @@ $text-shasow: 1px 1px 1px #fff;
     font-size: 1.5em;
     word-spacing: 10px;
     @include textColorStyle();
+    line-height: 1.5em;
 }
 
 .converter__description-field {
     margin-right: 10px;
     font-size: 1.1em;
     @include textColorStyle();
+}
+.converter__description-field_sum {
+    display: inline-block;
+    padding: 10px 0;
 }
 
 .converter__item_from-to-exchange {

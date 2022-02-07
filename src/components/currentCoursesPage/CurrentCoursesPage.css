@@ -43,3 +43,9 @@
   color: #1c1199;
   text-shadow: 1px 1px 1px #fff;
 }
+
+@media (max-width: 500px) {
+  .current-display {
+    font-size: 1.2em;
+  }
+}

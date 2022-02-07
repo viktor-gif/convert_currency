@@ -30,6 +30,14 @@
   bottom: 5px;
 }
 
+.converter__input_sum {
+  width: 100px;
+}
+
+.converter__input_sum-larger {
+  width: 250px;
+}
+
 .converter__calc-button {
   font-size: 1.1em;
   margin-bottom: 15px;
@@ -56,6 +64,7 @@
   word-spacing: 10px;
   color: #1c1199;
   text-shadow: 1px 1px 1px #fff;
+  line-height: 1.5em;
 }
 
 .converter__description-field {
@@ -63,6 +72,11 @@
   font-size: 1.1em;
   color: #1c1199;
   text-shadow: 1px 1px 1px #fff;
+}
+
+.converter__description-field_sum {
+  display: inline-block;
+  padding: 10px 0;
 }
 
 .converter__item_from-to-exchange {

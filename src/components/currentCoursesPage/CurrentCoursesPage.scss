@@ -43,3 +43,9 @@ $text-shasow: 1px 1px 1px #fff;
     font-size: 1.1em;
     @include textColorStyle();
 }
+
+@media (max-width: 500px) {
+    .current-display {
+        font-size: 1.2em;
+    }
+}

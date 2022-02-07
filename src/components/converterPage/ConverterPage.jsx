@@ -38,19 +38,20 @@ export const ConverterPage = React.memo((props) => {
 
     const onSumInputChange = e => {
         setSum(e.currentTarget.value)
-        console.log(e.currentTarget.value)
     }
 
     if (props.requestInProgress) {
         return <Preloader />
     }
 
+    let changeSizeOfSumInput = sum.length > 8 ? "converter__input_sum-larger" : ""
+
     return <div className="converter">
                     
         <div className="converter__item converter__item_input">
-            <span className="converter__description-field">Currency amount</span>
+            <span className="converter__description-field converter__description-field_sum">Currency amount</span>
             <label className="loginLabel" htmlFor="sum">
-                <input className="converter__input" type="number" id="sum" stap="any"
+                <input className={`converter__input converter__input_sum ${changeSizeOfSumInput}`} type="number" id="sum" stap="any"
                 name="sum" placeholder="Sum"
                 value={sum} onChange={onSumInputChange} />
             </label>

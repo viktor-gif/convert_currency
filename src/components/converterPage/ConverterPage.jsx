@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Preloader } from "../common/preloader/preloader";
 import "./ConverterPage.css"
 
-
 export const ConverterPage = React.memo((props) => {
 
     const [sum, setSum] = useState(1)
@@ -18,22 +17,27 @@ export const ConverterPage = React.memo((props) => {
         c => c.cc === changingName
     )[0].rate
 
-    const onCalcButtomClick = () => {
+    const calculateResult = () => {
 
         let currentResult
 
         if (+sum > 0) {
-            debugger
             currentResult = (Math.round(((changeableRate / baseCurrencyRate) * sum) * 100) / 100)
             .toFixed(2)
         } else if (sum === '0') {
             currentResult = 0
         } else {
-            debugger
             currentResult = null
         }
         
         setResult(currentResult)
+    }
+
+    const onPageEnterPress = (e) => {
+        console.log(e.charCode)
+        if (e.charCode === 13) {
+            calculateResult()
+        }
     }
 
     const onSumInputChange = e => {
@@ -46,7 +50,7 @@ export const ConverterPage = React.memo((props) => {
 
     let changeSizeOfSumInput = sum.length > 8 ? "converter__input_sum-larger" : ""
 
-    return <div className="converter">
+    return <div className="converter" onKeyPress={onPageEnterPress}>
                     
         <div className="converter__item converter__item_input">
             <span className="converter__description-field converter__description-field_sum">Currency amount</span>
@@ -74,7 +78,7 @@ export const ConverterPage = React.memo((props) => {
         </div>
 
                     
-        <button className="converter__calc-button" onClick={onCalcButtomClick}>Calculate</button>
+        <button className="converter__calc-button" onClick={calculateResult}>Calculate</button>
 
         {result || result === 0
             ? <div className="converter__result">{`${sum} ${changeableName} = ${result} ${changingName}`}</div>

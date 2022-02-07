@@ -5,10 +5,10 @@ import "./ConverterPage.css"
 
 export const ConverterPage = React.memo((props) => {
 
-    const [sum, setSum] = useState(0)
+    const [sum, setSum] = useState(1)
     const [changeableName, setChangeableName] = useState("UAH")
     const [changingName, setChangingName] = useState("UAH")
-    const [result, setResult] = useState(0)
+    const [result, setResult] = useState(1)
 
     const changeableRate = props.currencyCourses?.filter(
         c => c.cc === changeableName
@@ -19,9 +19,21 @@ export const ConverterPage = React.memo((props) => {
     )[0].rate
 
     const onCalcButtomClick = () => {
+
+        let currentResult
+
+        if (+sum > 0) {
+            debugger
+            currentResult = (Math.round(((changeableRate / baseCurrencyRate) * sum) * 100) / 100)
+            .toFixed(2)
+        } else if (sum === '0') {
+            currentResult = 0
+        } else {
+            debugger
+            currentResult = null
+        }
         
-        setResult((Math.round(((changeableRate / baseCurrencyRate) * sum) * 100) / 100)
-        .toFixed(2))
+        setResult(currentResult)
     }
 
     const onSumInputChange = e => {
@@ -63,8 +75,10 @@ export const ConverterPage = React.memo((props) => {
                     
         <button className="converter__calc-button" onClick={onCalcButtomClick}>Calculate</button>
 
-        <div className="converter__result">{`${sum} ${changeableName} = ${result} ${changingName}`}</div>
-
+        {result || result === 0
+            ? <div className="converter__result">{`${sum} ${changeableName} = ${result} ${changingName}`}</div>
+            : <div className="converter__error-result">Please, enter correct sum of money</div>
+        }
     </div>
     
 })

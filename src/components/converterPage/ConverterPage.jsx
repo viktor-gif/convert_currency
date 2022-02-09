@@ -5,8 +5,8 @@ import "./ConverterPage.css"
 export const ConverterPage = React.memo((props) => {
 
     const [sum, setSum] = useState(1)
-    const [changeableName, setChangeableName] = useState("UAH")
-    const [changingName, setChangingName] = useState("UAH")
+    const [changeableName, setChangeableName] = useState(props.defaultCurrency)
+    const [changingName, setChangingName] = useState(props.defaultCurrency)
     const [result, setResult] = useState(1)
 
     const changeableRate = props.currencyCourses?.filter(
@@ -34,7 +34,6 @@ export const ConverterPage = React.memo((props) => {
     }
 
     const onPageEnterPress = (e) => {
-        console.log(e.charCode)
         if (e.charCode === 13) {
             calculateResult()
         }

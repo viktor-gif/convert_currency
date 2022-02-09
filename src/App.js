@@ -1,10 +1,11 @@
-import React from 'react';
+import React,{ useEffect, useState } from 'react';
 import './App.css';
+import './components/converterPage/ConverterPage.css';
+
 import { ConverterPage } from './components/converterPage/ConverterPage';
 import { CurrentCoursesPage } from './components/currentCoursesPage/CurrentCoursesPage';
 import { Header } from './components/header/Header';
 import { HashRouter, Route } from 'react-router-dom';
-import { useEffect } from 'react';
 import { connect, Provider } from 'react-redux';
 import { getCurrencyCourses } from './redux/app-reducer'
 import { compose } from 'redux';
@@ -13,26 +14,48 @@ import { CurrencyName } from './components/currencyName/CurrencyName';
 
 const App = React.memo((props) => {
 
+  const [defaultCurrency, setDefaultCurrency] = useState("UAH")
+  const [isAppActive, setAppActive] = useState(false)
+
   useEffect(() => {
     props.getCurrencyCourses()
   }, [])
 
-  console.log(props.currencyCourses)
-
   const currensyNamesOptions = props.currencyCourses?.map(c => {
-    return <CurrencyName key={c.r030} cc={c.cc} rate={c.rate} current={"UAH"} />
+    return <CurrencyName key={c.r030} cc={c.cc} rate={c.rate} current={defaultCurrency} />
   })
 
   return (
       <div className="App">
+        {!isAppActive ?
+        <div className="defalt-currency">
+          <div className="converter__item converter__item_from-to-exchange">
+              <span className="converter__description-field">
+                Choose a default currency
+              </span>
+              <label className="converter__change-from-label" className="loginLabel" htmlFor="changeable">
+                  <select className="converter__input" id="changeable" name="changeable"
+                  onChange={e => setDefaultCurrency(e.currentTarget.value)}>
+                      {currensyNamesOptions}
+                  </select>
+              </label>
+          </div>
+          <button className="converter__calc-button" onClick={() => setAppActive(true)}>Set default value</button>
+        </div>
+        :
+        <div className="mainWrap">
           <Header />
-        <main>
-          <Route path="/converter" render={() => <ConverterPage currencyCourses={props.currencyCourses}
-            currensyNamesOptions={currensyNamesOptions}requestInProgress={props.requestInProgress} />} />
-          <Route path="/current" render={() => <CurrentCoursesPage currencyCourses={props.currencyCourses}
-            currensyNamesOptions={currensyNamesOptions}requestInProgress={props.requestInProgress} />} />
-          {props.errorMessage && <Error errorMessage={props.errorMessage} />}
-        </main>
+          <main>
+            <Route path="/converter" render={() => <ConverterPage currencyCourses={props.currencyCourses}
+              currensyNamesOptions={currensyNamesOptions}requestInProgress={props.requestInProgress}
+              defaultCurrency={defaultCurrency} />} />
+            <Route path="/current" render={() => <CurrentCoursesPage currencyCourses={props.currencyCourses}
+              currensyNamesOptions={currensyNamesOptions}requestInProgress={props.requestInProgress}
+              defaultCurrency={defaultCurrency} />} />
+            {props.errorMessage && <Error errorMessage={props.errorMessage} />}
+          </main>
+        </div>
+        }
       </div>
   );
 })

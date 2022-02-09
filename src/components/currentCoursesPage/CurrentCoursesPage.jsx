@@ -4,7 +4,7 @@ import { Preloader } from "../common/preloader/preloader";
 import "./CurrentCoursesPage.css"
 
 export const CurrentCoursesPage = React.memo((props) => {
-    const [baseCurrencyName, setBaseCurrencyName] = useState("UAH")
+    const [baseCurrencyName, setBaseCurrencyName] = useState(props.defaultCurrency)
 
     const mainCurrencyes = props.currencyCourses?.filter(c => {
         return c.cc === "USD" || c.cc === "UAH" || c.cc === "EUR" || c.cc === "RUB"
@@ -13,8 +13,6 @@ export const CurrentCoursesPage = React.memo((props) => {
     const baseCurrencyRate = props.currencyCourses?.filter(
         c => c.cc === baseCurrencyName
     )[0].rate
-
-        console.log(baseCurrencyRate)
 
     const mainCurrencyesItems = mainCurrencyes && mainCurrencyes
     .filter(m => m.rate / baseCurrencyRate !== 1)
@@ -28,7 +26,6 @@ export const CurrentCoursesPage = React.memo((props) => {
 
     const onSelectOption = (e) => {
         setBaseCurrencyName(e.currentTarget.value)
-        console.log(e);
     }
 
     if (props.requestInProgress) {
